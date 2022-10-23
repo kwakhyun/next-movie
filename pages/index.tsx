@@ -3,33 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Seo from "../components/Seo";
-
-interface INowMoviesItem {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: number;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
-
-interface INowMovies {
-  page: string;
-  results: INowMoviesItem[];
-}
-
-interface IMovieClickProps {
-  id: number;
-  title: string;
-}
+import { IMovieClickProps, IMovies, IMoviesItem } from "../typings/types";
 
 export default function Home({
   results,
@@ -39,7 +13,7 @@ export default function Home({
   const onClickMovieCard = ({ id, title }: IMovieClickProps) => {
     router.push(`/movies/${title}/${id}`);
   };
-  console.log(results);
+
   return (
     <div className="box">
       <Seo title="현재 상영" />
@@ -49,7 +23,7 @@ export default function Home({
       </div>
 
       <div className="movies">
-        {results?.map((movie: INowMoviesItem) => (
+        {results?.map((movie: IMoviesItem) => (
           <>
             {!movie.genre_ids.includes(27) && (
               <div
@@ -117,7 +91,7 @@ export default function Home({
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { results }: INowMovies = await (
+  const { results }: IMovies = await (
     await fetch(`${process.env.SERVER_URL}/movies/now`)
   ).json();
 
