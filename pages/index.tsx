@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Seo from "../components/Seo";
-import styled from "styled-components";
 
 interface INowMoviesItem {
   adult: boolean;
@@ -42,7 +41,7 @@ export default function Home({
   };
   console.log(results);
   return (
-    <StyledHome>
+    <div className="box">
       <Seo title="현재 상영" />
 
       <div className="title">
@@ -55,7 +54,6 @@ export default function Home({
             {!movie.genre_ids.includes(27) && (
               <div
                 className="movie"
-                key={movie.id}
                 onClick={() => {
                   onClickMovieCard({
                     id: movie.id,
@@ -76,11 +74,45 @@ export default function Home({
                 />
               </div>
             )}
-            ß
           </>
         ))}
       </div>
-    </StyledHome>
+
+      <style jsx>{`
+        .box {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .container {
+          width: 100%;
+        }
+        .movies {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          padding: 20px;
+          gap: 20px;
+          text-align: center;
+          width: 100%;
+        }
+        .movie {
+          cursor: pointer;
+        }
+        .movie img {
+          max-width: 100%;
+          border-radius: 12px;
+          transition: transform 0.2s ease-in-out;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+        .movie h4 {
+          font-size: 14px;
+          text-align: center;
+        }
+      `}</style>
+    </div>
   );
 }
 
@@ -95,39 +127,3 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
-
-const StyledHome = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  
-  .container {
-    width: 100%;
-  }
-  .movies {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    padding: 20px;
-    gap: 20px;
-    text-align: center;
-    width: 100%;
-  }
-  .movie {
-    cursor: pointer;
-  }
-  .movie img {
-    max-width: 100%;
-    border-radius: 12px;
-    transition: transform 0.2s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  }
-  .movie:hover img {
-    transform: scale(1.05) translateY(-5px);
-  }
-  .movie h4 {
-    font-size: 22px;
-    text-align: center;
-  }
-`;
