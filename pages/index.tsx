@@ -118,7 +118,7 @@ export default function Home({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { results }: INowMovies = await (
-    await fetch("http://localhost:3000/movies/now")
+    await fetch(`${process.env.SERVER_URL}/movies/now`)
   ).json();
 
   return {
