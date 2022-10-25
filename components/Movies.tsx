@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { IMovieClickProps, IMoviesItem } from "../typings/types";
-import { Seo } from "./Seo";
+import Seo from "./Seo";
 
 interface IMoviesProps {
   seo: string;

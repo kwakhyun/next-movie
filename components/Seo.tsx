@@ -4,10 +4,10 @@ interface IProps {
   title: string;
 }
 
-export const Seo = ({ title }: IProps) => {
+export default function Seo({ title }: IProps) {
   return (
     <Head>
       <title>{title} | Next Movies</title>
     </Head>
   );
-};
+}
