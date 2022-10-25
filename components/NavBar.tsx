@@ -10,17 +10,19 @@ export default function NavBar() {
       <h1>Next Movies</h1>
       <div>
         <Link href={"/"}>
-          <a className={router.pathname === "/" ? "active" : ""}>현재 상영</a>
+          <span className={router.pathname === "/" ? "active" : ""}>
+            현재 상영
+          </span>
         </Link>
         <Link href={"/upcoming"}>
-          <a className={router.pathname === "/about" ? "active" : ""}>
+          <span className={router.pathname === "/upcoming" ? "active" : ""}>
             개봉 예정
-          </a>
+          </span>
         </Link>
         <Link href={"/top"}>
-          <a className={router.pathname === "/movies" ? "active" : ""}>
+          <span className={router.pathname === "/top" ? "active" : ""}>
             최고 평점
-          </a>
+          </span>
         </Link>
       </div>
       <style jsx>{`
@@ -39,7 +41,7 @@ export default function NavBar() {
             max-width: 100px;
             margin-bottom: 5px;
           }
-          a {
+          span {
             font-weight: 600;
             font-size: 18px;
             cursor: pointer;
@@ -66,7 +68,7 @@ export default function NavBar() {
             color: #fff;
             height: 5rem;
           }
-          a {
+          span {
             color: #fff;
             text-decoration: none;
             margin: 0 1rem;

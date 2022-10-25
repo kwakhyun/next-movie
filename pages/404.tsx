@@ -7,9 +7,7 @@ export default function NotFound() {
       <Seo title="NOT FOUND" />
       <h1>페이지를 찾을 수 없습니다.</h1>
       <Link href="/">
-        <a>
-          <h2>홈으로 돌아가기 &rarr;</h2>
-        </a>
+        <h2>홈으로 돌아가기 &rarr;</h2>
       </Link>
       <style jsx>{`
         div {

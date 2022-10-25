@@ -37,7 +37,7 @@ export default function Top({
               >
                 <h4>
                   <Link href={`/movies/${movie.original_title}/${movie.id}`}>
-                    <a>{movie.original_title}</a>
+                    {movie.original_title}
                   </Link>
                 </h4>
                 <Image

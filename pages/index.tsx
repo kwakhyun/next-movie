@@ -2,6 +2,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useRef } from "react";
 import Seo from "../components/Seo";
 import { IMovieClickProps, IMovies, IMoviesItem } from "../typings/types";
 
@@ -9,6 +10,7 @@ export default function Home({
   results,
 }: InferGetServerSidePropsType<GetServerSideProps>) {
   const router = useRouter();
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   const onClickMovieCard = ({ id, title }: IMovieClickProps) => {
     router.push(`/movies/${title}/${id}`);
@@ -35,16 +37,16 @@ export default function Home({
                   });
                 }}
               >
-                <h4>
+                <h4 ref={titleRef}>
                   <Link href={`/movies/${movie.original_title}/${movie.id}`}>
-                    <a>{movie.original_title}</a>
+                    {movie.original_title}
                   </Link>
                 </h4>
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.original_title}
-                  width={500}
-                  height={750}
+                  width={170}
+                  height={255}
                 />
               </div>
             )}
@@ -60,13 +62,12 @@ export default function Home({
           flex-direction: column;
           width: 100%;
         }
-
         .container {
           width: 100%;
         }
         .movies {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
           padding: 20px;
           gap: 20px;
           text-align: center;
@@ -84,6 +85,9 @@ export default function Home({
         .movie h4 {
           font-size: 14px;
           text-align: center;
+        }
+        .long-title {
+          font-size: 12px;
         }
       `}</style>
     </div>
