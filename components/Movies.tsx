@@ -40,17 +40,17 @@ export const Movies: FC<IMoviesProps> = ({ seo, title, results }) => {
                   });
                 }}
               >
-                <h4>
-                  <Link href={`/movies/${movie.original_title}/${movie.id}`}>
-                    {movie.original_title}
-                  </Link>
-                </h4>
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.original_title}
                   width={170}
                   height={255}
                 />
+                <h4>
+                  <Link href={`/movies/${movie.original_title}/${movie.id}`}>
+                    {movie.title}
+                  </Link>
+                </h4>
               </div>
             )}
           </>
