@@ -6,8 +6,7 @@ export default function NavBar() {
 
   return (
     <nav>
-      {/* <Image src="/vercel.svg" alt="logo" width={100} height={40} /> */}
-      <h1>Next Movies</h1>
+      <h1 onClick={() => router.back()}>Next Movies</h1>
       <div>
         <Link href={"/"}>
           <span className={router.pathname === "/" ? "active" : ""}>
@@ -37,9 +36,8 @@ export default function NavBar() {
             background-color: #000;
             font-family: "Gill Sans", sans-serif;
           }
-          img {
-            max-width: 100px;
-            margin-bottom: 5px;
+          h1 {
+            cursor: pointer;
           }
           span {
             font-weight: 600;
@@ -67,6 +65,9 @@ export default function NavBar() {
             background-color: #000;
             color: #fff;
             height: 5rem;
+          }
+          h1 {
+            cursor: pointer;
           }
           span {
             color: #fff;
