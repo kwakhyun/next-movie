@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 interface IProps {
-  title: string;
+  title: string | undefined;
 }
 
 export default function Seo({ title }: IProps) {

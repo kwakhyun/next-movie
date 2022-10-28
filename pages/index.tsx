@@ -16,7 +16,7 @@ export default function Home({
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { results }: IMovies = await (
     await fetch(`${process.env.SERVER_URL}/movies/now`)
   ).json();

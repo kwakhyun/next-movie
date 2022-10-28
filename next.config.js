@@ -20,7 +20,7 @@ const nextConfig = {
         destination: `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=ko-KR&page=1`,
       },
       {
-        source: "/api/movies/:id",
+        source: "/movie/:id",
         destination: `https://api.themoviedb.org/3/movie/:id?api_key=${process.env.API_KEY}&language=ko-KR`,
       },
     ];
