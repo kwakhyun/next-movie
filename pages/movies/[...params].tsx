@@ -76,7 +76,7 @@ function Detail({ params }: { params: MovieDetailParams }) {
       <Seo title={title} />
       <Image
         src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
-        alt={movie.original_title}
+        alt={movie?.original_title}
         width={1280}
         height={720}
         style={{
