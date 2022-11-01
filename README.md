@@ -22,3 +22,9 @@
 ```bash
 npx create-next-app --typescript
 ```
+
+### 미리보기 - Mobile
+<img width="308" alt="스크린샷 2022-11-01 오후 6 35 28" src="https://user-images.githubusercontent.com/73919235/199204429-ba00b12f-e712-43e0-9325-e3d10dea20cc.png">
+
+### 미리보기 - Desktop
+<img width="1470" alt="스크린샷 2022-11-01 오후 6 34 25" src="https://user-images.githubusercontent.com/73919235/199204414-6318ef6e-8105-4115-800f-28e857a46a07.png">
