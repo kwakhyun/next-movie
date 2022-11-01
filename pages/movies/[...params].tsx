@@ -1,6 +1,5 @@
-import axios from "axios";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
-import { useQuery } from "react-query";
 import Seo from "../../components/Seo";
 
 interface IMovie {
@@ -63,17 +62,18 @@ interface ISpokenLanguages {
 
 type MovieDetailParams = [string, string] | [];
 
-function Detail({ params }: { params: MovieDetailParams }) {
-  const [title, id] = params || [];
-
-  const { data } = useQuery("getMovieDetail", () => axios.get(`/movie/${id}`));
-
-  const movie: IMovie = data?.data;
+function Detail({
+  params,
+  movie,
+}: {
+  params: MovieDetailParams;
+  movie: InferGetServerSidePropsType<GetServerSideProps>;
+}) {
   console.log(movie);
 
   return (
     <div className="container">
-      <Seo title={title} />
+      <Seo title={params[0]} />
       <Image
         src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
         alt={movie?.original_title}
@@ -143,10 +143,15 @@ function Detail({ params }: { params: MovieDetailParams }) {
   );
 }
 
-export const getServerSideProps = ({ params: { params } }: any) => {
+export const getServerSideProps = async ({ params: { params } }: any) => {
+  const movie: IMovie = await (
+    await fetch(`${process.env.SERVER_URL}/movie/${params[1]}`)
+  ).json();
+
   return {
     props: {
       params,
+      movie,
     },
   };
 };
