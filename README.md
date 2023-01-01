@@ -1,10 +1,11 @@
-## Next Movies
+## NEXT MOVIE
 
-# 2023년 1월 1일 대규모 업데이트 예정입니다.
+## 2023년 1월 2일 오전 2시 서비스 배포 예정
 
 ![image](https://user-images.githubusercontent.com/73919235/210082395-ad726aec-fdf4-45d4-ac2a-17e5e1017a03.png)
 
 ## 2.0 버전 패치노트
+
 - 전체적인 UI 리뉴얼
 - 검색 기능 추가
 - 장르별 조회 추가
