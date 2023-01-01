@@ -1,7 +1,7 @@
-# NEXT MOVIE
+# NEXT MOVIE 🎞
 
 ## 프로젝트 소개
-- [NEXT MOVIE 바로가기]()
+- [NEXT MOVIE 바로가기](https://next-movie-three.vercel.app/)
 - Next.js 기반 SSR SPA 프로젝트입니다.
 - [TMDB API](https://www.themoviedb.org/)를 사용해 영화 정보를 제공합니다.
 
@@ -11,6 +11,7 @@
   - 인기 영화
   - 최고 평점 영화
   - 장르별 영화
+  - 정렬 기능
 
 - 영화 및 감독, 배우 검색
 

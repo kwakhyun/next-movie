@@ -6,7 +6,6 @@ import MovieCard from '../movie/MovieCard';
 
 import { ID } from '../../shared/types/commonTypes';
 import { personAPI } from '../../shared/apis/personAPI';
-import { MovieCrew, MovieDetails } from '../../shared/types/moviesTypes';
 
 interface PersonCrewGridListProps {
   personId: ID;
@@ -14,10 +13,7 @@ interface PersonCrewGridListProps {
 
 function PersonCrewGridList({ personId }: PersonCrewGridListProps) {
   const { data, isLoading } = useQuery(personAPI.personDetails(personId));
-  const crewList = lodash.uniqBy(
-    data?.credits.crew ?? [],
-    (crew: MovieDetails) => crew.id,
-  );
+  const crewList = lodash.uniqBy(data?.credits.crew ?? [], (crew) => crew.id);
 
   return (
     <BaseGridList
@@ -26,8 +22,8 @@ function PersonCrewGridList({ personId }: PersonCrewGridListProps) {
     >
       {crewList.map((personCrew) => {
         const allJobs = data?.credits.crew
-          .filter((crew: { id: number }) => crew.id === personCrew.id)
-          .map((crew: MovieCrew) => crew.job);
+          .filter((crew) => crew.id === personCrew.id)
+          .map((crew) => crew.job);
         return (
           <li key={personCrew.id}>
             <MovieCard movie={personCrew} subheader={allJobs?.join(', ')} />
