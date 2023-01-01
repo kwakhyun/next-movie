@@ -1,24 +1,59 @@
 {
-  "name": "nextjs-prac",
+  "name": "next-movie",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --fix --dir pages --dir src --dir middleware.ts",
+    "prepare": "husky install",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "next": "^13.0.0",
+    "@emotion/cache": "^11.10.5",
+    "@emotion/is-prop-valid": "^1.2.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.2",
+    "@tanstack/react-query": "^4.20.4",
+    "@tanstack/react-query-devtools": "^4.20.4",
+    "lodash": "^4.17.21",
+    "next": "^12.3.1",
+    "next-seo": "^5.15.0",
+    "nookies": "^2.5.2",
+    "nprogress": "^0.2.0",
+    "query-string": "^8.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-full-screen": "^1.1.1",
+    "react-hotkeys": "^2.0.0",
+    "react-infinite-scroll-hook": "^4.0.4",
+    "swiper": "^8.4.5"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.191",
     "@types/node": "18.11.3",
+    "@types/nprogress": "^0.2.0",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
     "eslint": "8.25.0",
     "eslint-config-next": "^13.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-deprecation": "^1.3.3",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
     "typescript": "4.8.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "npm run lint"
+    ]
   }
 }
