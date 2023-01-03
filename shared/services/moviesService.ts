@@ -13,6 +13,11 @@ import {
 import { CustomError } from '../errors/customError';
 import { tmdbClient } from '../clients/tmdbClient';
 
+const defaultParams = {
+  language: 'ko-KR',
+  region: 'KR',
+};
+
 const getMovie = async <T extends Movie>(
   movieId: ID,
   args: {
@@ -33,6 +38,9 @@ const getMovie = async <T extends Movie>(
 const getMovieGenres = async () => {
   const { genres } = await tmdbClient.get<{ genres: Genre[] }>(
     '/genre/movie/list',
+    {
+      language: 'ko-KR',
+    },
   );
   return genres;
 };
@@ -44,6 +52,7 @@ const getDiscoverMovies = async (
   const movies = await tmdbClient.get<PaginationResponse<Movie>>(
     '/discover/movie',
     {
+      ...defaultParams,
       with_genres: params.genreId,
       sort_by: params.sortBy,
       page,
@@ -58,6 +67,7 @@ const getPopularMovies = async (page: number) => {
   const movies = await tmdbClient.get<PaginationResponse<Movie>>(
     '/movie/popular',
     {
+      ...defaultParams,
       page,
     },
   );
@@ -69,6 +79,7 @@ const getNowPlayingMovies = async (page: number) => {
   const movies = await tmdbClient.get<PaginationResponse<Movie>>(
     '/movie/now_playing',
     {
+      ...defaultParams,
       page,
     },
   );
@@ -80,6 +91,7 @@ const getUpcomingMovies = async (page: number) => {
   const movies = await tmdbClient.get<PaginationResponse<Movie>>(
     '/movie/upcoming',
     {
+      ...defaultParams,
       page,
     },
   );
@@ -91,6 +103,7 @@ const getTopRatedMovies = async (page: number) => {
   const movies = await tmdbClient.get<PaginationResponse<Movie>>(
     '/movie/top_rated',
     {
+      ...defaultParams,
       page,
     },
   );
