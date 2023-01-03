@@ -47,6 +47,16 @@ export const moviesAPI = {
           }),
     getNextPageParam,
   }),
+  nowPlayingMovies: () => ({
+    queryKey: ['nowPlayingMovies'],
+    queryFn: ({ pageParam = FIRST_PAGE }) =>
+      IS_SERVER
+        ? moviesService.getNowPlayingMovies(pageParam)
+        : httpClient.get<PaginationResponse<Movie>>('/api/movies/now-playing', {
+            page: pageParam,
+          }),
+    getNextPageParam,
+  }),
   upcomingMovies: () => ({
     queryKey: ['upcomingMovies'],
     queryFn: ({ pageParam = FIRST_PAGE }) =>
