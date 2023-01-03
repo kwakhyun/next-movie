@@ -65,6 +65,17 @@ const getPopularMovies = async (page: number) => {
   return filterViewablePageResults(movies);
 };
 
+const getUpcomingMovies = async (page: number) => {
+  const movies = await tmdbClient.get<PaginationResponse<Movie>>(
+    '/movie/upcoming',
+    {
+      page,
+    },
+  );
+
+  return filterViewablePageResults(movies);
+};
+
 const getTopRatedMovies = async (page: number) => {
   const movies = await tmdbClient.get<PaginationResponse<Movie>>(
     '/movie/top_rated',
@@ -91,7 +102,6 @@ const getMovieRecommendations = async (
   movieId: ID,
   params: { page: number },
 ) => {
-  // To be sure movie is viewable, we fetch it too
   const movie = await getMovie<
     Movie & { recommendations: PaginationResponse<Movie> }
   >(movieId, {
@@ -107,6 +117,7 @@ export const moviesService = {
   getMovieGenres,
   getDiscoverMovies,
   getPopularMovies,
+  getUpcomingMovies,
   getTopRatedMovies,
   getMovieDetails,
   getMovieRecommendations,

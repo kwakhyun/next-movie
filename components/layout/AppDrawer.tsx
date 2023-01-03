@@ -10,8 +10,9 @@ import {
   Toolbar,
   Box,
 } from '@mui/material';
-import StarIcon from '@mui/icons-material/StarRate';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import UpcomingIcon from '@mui/icons-material/Upcoming';
+import StarIcon from '@mui/icons-material/StarRate';
 import SortIcon from '@mui/icons-material/Sort';
 
 import AppTitle from './AppTitle';
@@ -56,6 +57,12 @@ function AppDrawer() {
             selected={router.pathname === '/movie/popular'}
             icon={<TrendingUpIcon />}
             title="인기 영화"
+          />
+          <AppDrawerItem
+            href="/movie/upcoming"
+            selected={router.pathname === '/movie/upcoming'}
+            icon={<UpcomingIcon />}
+            title="개봉 예정 영화"
           />
           <AppDrawerItem
             href="/movie/top-rated"
