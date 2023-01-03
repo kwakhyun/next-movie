@@ -10,9 +10,10 @@ import {
   Toolbar,
   Box,
 } from '@mui/material';
-import StarIcon from '@mui/icons-material/StarRate';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import SortIcon from '@mui/icons-material/Sort';
+import MovieIcon from '@mui/icons-material/Movie';
+import UpcomingIcon from '@mui/icons-material/Upcoming';
+import StarIcon from '@mui/icons-material/StarRate';
 
 import AppTitle from './AppTitle';
 import AppDrawerItem from './AppDrawerItem';
@@ -58,16 +59,22 @@ function AppDrawer() {
             title="인기 영화"
           />
           <AppDrawerItem
+            href="/movie/now-playing"
+            selected={router.pathname === '/movie/now-playing'}
+            icon={<MovieIcon />}
+            title="현재 상영 영화"
+          />
+          <AppDrawerItem
+            href="/movie/upcoming"
+            selected={router.pathname === '/movie/upcoming'}
+            icon={<UpcomingIcon />}
+            title="개봉 예정 영화"
+          />
+          <AppDrawerItem
             href="/movie/top-rated"
             selected={router.pathname === '/movie/top-rated'}
             icon={<StarIcon />}
             title="최고 평점 영화"
-          />
-          <AppDrawerItem
-            href="/movie/discover"
-            selected={router.pathname === '/movie/discover'}
-            icon={<SortIcon />}
-            title="정렬 조회하기"
           />
         </List>
         <Divider />

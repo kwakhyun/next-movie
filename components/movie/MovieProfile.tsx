@@ -35,21 +35,18 @@ function MovieProfile({ movie, loading }: MovieProfileProps) {
 
             <div>
               <Typography variant="h6" gutterBottom>
-                관련 동영상
+                영상/포토
               </Typography>
               <MovieVideoCarousel movieId={movie.id} />
             </div>
 
             <div>
-              <Typography variant="h6" gutterBottom>
-                영화 스틸컷
-              </Typography>
               <MovieImageCarousel movie={movie} />
             </div>
 
             <div>
               <Typography variant="h6" gutterBottom>
-                출연 배우
+                주요 출연진
               </Typography>
               <MovieCastCarousel movieId={movie.id} />
             </div>
