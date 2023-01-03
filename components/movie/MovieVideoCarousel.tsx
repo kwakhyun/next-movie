@@ -16,6 +16,7 @@ interface MovieVideoCarouselProps {
 function MovieVideoCarousel({ movieId }: MovieVideoCarouselProps) {
   const { data, isLoading } = useQuery(moviesAPI.movieDetails(movieId));
   const videos = data?.videos.results || [];
+
   return (
     <>
       <BaseCarousel
