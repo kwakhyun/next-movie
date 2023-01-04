@@ -1,5 +1,5 @@
 import { InfiniteData } from '@tanstack/react-query';
-import lodash from 'lodash';
+import _ from 'lodash';
 
 import { CustomError } from '../errors/customError';
 import { PaginationResponse, ItemWithId, Maybe } from '../types/commonTypes';
@@ -13,7 +13,7 @@ export function getNextPageParam(pageData: PaginationResponse<unknown>) {
 export function getAllPageResults<T extends ItemWithId>(
   allPages: Maybe<InfiniteData<PaginationResponse<T>>>,
 ): T[] {
-  return lodash.uniqBy(
+  return _.uniqBy(
     allPages?.pages.flatMap((page) => page.results) ?? [],
     (item) => item.id,
   );
